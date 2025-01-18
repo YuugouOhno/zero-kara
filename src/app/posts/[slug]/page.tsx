@@ -4,9 +4,13 @@ import matter from 'gray-matter';
 import { Metadata } from 'next';
 import { marked } from 'marked';
 
+import PostHeader from "@/components/PostHeader";
+import PostContent from "@/components/PostContent";
+import BackLink from "@/components/BackLink";
+
 // 投稿データを取得する関数
 async function getPost(slug: string) {
-    const filePath = path.join(process.cwd(), `src/app/_posts/${slug}.md`);
+    const filePath = path.join(process.cwd(), `src/posts/${slug}.md`);
     const fileContents = fs.readFileSync(filePath, 'utf8');
     const { data, content } = matter(fileContents);
 
@@ -32,20 +36,13 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 export default async function PostPage({ params }: { params: { slug: string } }) {
     const { slug } = await params;
     const post = await getPost(slug);
+    const content = marked(post.content);
 
     return (
         <div className="p-4 max-w-4xl mx-auto h-screen py-36 px-20">
-            <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
-            <p className="text-gray-500 mb-8">{post.date}</p>
-
-            <div className="prose mt-8">
-                {/* Markdownの内容をHTMLに変換して表示 */}
-                <div dangerouslySetInnerHTML={{ __html: marked(post.content) }} />
-            </div>
-
-            <div className="mt-8">
-                <a href="/" className="text-blue-500">&larr; 戻る</a>
-            </div>
-        </div>
+            <PostHeader title={post.title} date={post.date} />
+            <PostContent content={content} />
+            <BackLink />
+        </div> 
     );
 }

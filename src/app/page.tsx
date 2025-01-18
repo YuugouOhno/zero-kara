@@ -1,8 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import Link from 'next/link';
-import Image from 'next/image';
+import BlogList from "@/components/BlogList";
 
 type Post = {
     slug: string;
@@ -13,7 +12,7 @@ type Post = {
 
 async function getPosts(): Promise<Post[]> {
     // postsディレクトリのパス
-    const postsDirectory = path.join(process.cwd(), 'src/app/_posts');
+    const postsDirectory = path.join(process.cwd(), 'src/posts');
     // ファイル一覧を取得
     const filenames = fs.readdirSync(postsDirectory);
 
@@ -43,24 +42,6 @@ export default async function home() {
     console.log(posts);
 
     return (
-        <div className="p-4 h-screen py-36 px-20">
-            <ul className="grid grid-cols-3 gap-4">
-                {posts.map((post) => (
-                    <li key={post.slug} className="border border-gray-300 rounded-lg p-2 m-2">
-                        <Link href={`/posts/${post.slug}`} className="block">
-                            <Image 
-                                src={`/posts/${post.slug}.png`}
-                                width={200}
-                                height={200}
-                                alt={post.title || "サムネ"}
-                                className="w-full h-auto rounded"
-                            />
-                            <p className="text-center text-xl mt-2 text-blue-500 font-bold">{post.title}</p>
-                            <p className="text-right text-md">{post.date}</p>
-                        </Link>
-                    </li>
-                ))}
-            </ul>
-        </div>
+        <BlogList posts={posts} />
     );
 }
