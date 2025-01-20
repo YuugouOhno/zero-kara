@@ -1,11 +1,14 @@
+import { marked } from 'marked';
+
 type PostContentProps = {
     content: string;
 };
 
 const PostContent: React.FC<PostContentProps> = ({ content }) => {
+    const mdContent = marked(content);
     return (
         <div className="prose mt-8">
-            <div dangerouslySetInnerHTML={{ __html: content }} />
+            <div dangerouslySetInnerHTML={{ __html: mdContent }} />
         </div>
     );
 };
