@@ -2,22 +2,29 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 
-type Post = {
+type Posts = {
     slug: string;
     title: string;
     date: string;
     description: string;
 };
 
+type Post = {
+    title: string;
+    date: string;
+    description: string;
+    content: string;
+};
+
 // postsディレクトリのパスを取得
 const postsDirectory = path.join(process.cwd(), 'src/posts');
 
-export async function getPosts(): Promise<Post[]> {
+export async function getPosts(): Promise<Posts[]> {
     // ファイル一覧を取得
     const filenames = fs.readdirSync(postsDirectory);
 
     // 各Markdownファイルのメタデータを取得
-    const posts: Post[] = filenames.map((filename) => {
+    const posts: Posts[] = filenames.map((filename) => {
         const filePath = path.join(postsDirectory, filename);
         const fileContents = fs.readFileSync(filePath, 'utf8');
         const { data } = matter(fileContents);
@@ -37,7 +44,7 @@ export async function getPosts(): Promise<Post[]> {
 }
 
 // 投稿データを取得する関数
-export async function getPost(slug: string) {
+export async function getPost(slug: string): Promise<Post> {
     const filePath = path.join(postsDirectory, `${slug}.md`);
     const fileContents = fs.readFileSync(filePath, 'utf8');
     const { data, content } = matter(fileContents);

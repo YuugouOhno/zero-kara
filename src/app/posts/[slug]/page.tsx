@@ -6,10 +6,18 @@ import BackLink from "@/components/BackLink";
 
 import { getPost } from "@/lib/posts";
 
+type Props = {
+    params: Promise<{
+        slug: string;
+    }>;
+};
+
 // 動的なメタデータを生成
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { slug } = await params;
     const post = await getPost(slug);
+    console.log(post);
+    
     return {
         title: post.title,
         description: post.description,
@@ -17,7 +25,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 // 詳細画面のコンポーネント
-export default async function PostPage({ params }: { params: { slug: string } }) {
+export default async function PostPage({ params }: Props) {
     const { slug } = await params;
     const post = await getPost(slug);
 
