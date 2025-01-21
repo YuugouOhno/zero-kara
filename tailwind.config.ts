@@ -12,6 +12,21 @@ export default {
 	theme: {
 		extend: {
 			colors: {
+				theme: {
+					bg: {
+						light: "#F3F3F3", // lightモードの背景色
+						dark: "#000000", // darkモードの背景色
+					},
+					text: {
+					  light: "#3F3F3F",  // lightモードの文字色
+					  dark: "#F3F3F3", // darkモードの文字色
+					},
+				},
+				original: {
+					purple: "#C6B2C9",
+					black: "#3F3F3F",
+					white: "#F3F3F3",
+				},
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				card: {

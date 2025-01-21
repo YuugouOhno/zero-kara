@@ -70,3 +70,12 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* カスタムクラス */
+.theme-bg-color {
+  @apply bg-theme-bg-light dark:bg-theme-bg-dark;
+}
+
+.theme-text-color {
+  @apply text-theme-text-light dark:text-theme-text-dark;
+}

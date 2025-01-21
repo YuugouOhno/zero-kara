@@ -5,11 +5,11 @@ import { ThemeToggle } from "@/feature/theme/theme-toggle";
 
 const NavBar = () => {
     const [isActive, setIsActive] = useState(true);
+    const [placeholder, setPlaceholder] = useState("Click to enter text");
 
     useEffect(() => {
         const handleScroll = () => {
             const scrollPosition = window.pageYOffset;
-
             // 最初のふわっとするやつ
             if (scrollPosition > 50) {
                 setIsActive(false);
@@ -26,18 +26,24 @@ const NavBar = () => {
     }, []);
     
     return (
-        <nav className={`fixed w-full bg-gray-800 transition-all duration-50 ease-in ${isActive ? 'p-4 text-xl' : 'bg-gray-300 p-0'}`}>
-            <div className="max-w-4xl w-full mx-auto flex justify-between items-center">
+        <nav className={`bg-original-purple text-original-black font-bold fixed w-full transition-all duration-50 ease-in ${isActive ? 'p-4 text-xl' : 'p-2'}`}>
+            <div className="w-full mx-auto flex justify-between items-center">
                 <div className="">
                     <div>©0→ ゼロカラ</div>
                 </div>
                 <div className="flex items-center">
                     <input
                         type="text"
-                        placeholder={isActive ? 'スペースで&検索' : '?'}  
-                        className={`text-center text-xl round-5 transition-all duration-50 ease-in bg-gray-700 ${isActive ? 'p-2 ' : 'p-1 w-10'}`}
+                        placeholder={placeholder}
+                        className={`bg-original-purple placeholder-original-black text-center text-xl round-5 transition-all duration-50 ease-in ${isActive ? 'p-4 mr-6 shadow' : 'hidden'}`}
                         onClick={() => setIsActive(true)}
+                        onFocus={() => setPlaceholder("")} // フォーカス時に非表示
+                        onBlur={() => setPlaceholder("スペースで&検索")} // フォーカス外れ時に再表示
                     />
+                    <div
+                        className={`bg-original-purple text-original-black text-center text-xl round-5 transition-all duration-500 ease-in ${isActive ? 'mr-2 hidden' : 'mr-2 p-2 w-10'}`}
+                        onClick={() => setIsActive(true)}
+                    >?</div>
                     <ThemeToggle />
                 </div>
             </div>
