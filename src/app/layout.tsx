@@ -38,9 +38,11 @@ export default function RootLayout({
                     disableTransitionOnChange
                     storageKey="acme-theme"
                 >
-                    <NavBar />
-                    {children}
-                    <Footer />
+                    <main className="theme-bg-color theme-text-color">
+                        <NavBar />
+                        {children}
+                        <Footer />
+                    </main>
                 </ThemeProvider>
             </body>
         </html>

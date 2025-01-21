@@ -15,7 +15,7 @@ export default {
 				theme: {
 					bg: {
 						light: "#F3F3F3", // lightモードの背景色
-						dark: "#000000", // darkモードの背景色
+						dark: "#3F3F3F", // darkモードの背景色
 					},
 					text: {
 					  light: "#3F3F3F",  // lightモードの文字色

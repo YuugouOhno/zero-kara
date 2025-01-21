@@ -5,7 +5,7 @@ import { ThemeToggle } from "@/feature/theme/theme-toggle";
 
 const NavBar = () => {
     const [isActive, setIsActive] = useState(true);
-    const [placeholder, setPlaceholder] = useState("Click to enter text");
+    const [placeholder, setPlaceholder] = useState("スペースで&検索");
 
     useEffect(() => {
         const handleScroll = () => {

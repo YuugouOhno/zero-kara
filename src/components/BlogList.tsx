@@ -12,7 +12,7 @@ type BlogListProps = {
 
 const BlogList: React.FC<BlogListProps> = ({ posts }) => {
     return (
-        <div className="p-4 h-screen py-36 px-20 light:bg-red-300 dark:bg-gray-700">
+        <div className="p-4 h-screen py-36 px-20 theme-bg-color">
             <ul className="grid grid-cols-3 gap-4">
                 {posts.map((post) => (
                 <BlogCard
