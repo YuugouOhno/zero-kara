@@ -1,4 +1,4 @@
-import BlogCard from "@/components/BlogCard";
+import BlogCard from "@/components/Home/BlogCard";
 
 type Post = {
     slug: string;

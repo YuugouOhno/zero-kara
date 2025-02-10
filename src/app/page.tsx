@@ -1,4 +1,4 @@
-import BlogList from "@/components/BlogList";
+import BlogList from "@/components/Home/BlogList";
 import Sidebar from "@/components/Sidebar";
 import { getPosts } from "@/lib/posts";
 

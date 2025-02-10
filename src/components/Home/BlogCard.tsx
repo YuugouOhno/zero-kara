@@ -12,7 +12,7 @@ type BlogCardProps = {
 
 const BlogCard = ({ slug,title,date,description,tags }:BlogCardProps) => {
   return (
-    <article className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+    <article className="rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
       <div className="flex gap-6 p-4">
         <div className="relative w-48 max-w-full flex-shrink-0 aspect-[4/3]">
           <Link href={`/posts/${slug}`}>
@@ -34,7 +34,7 @@ const BlogCard = ({ slug,title,date,description,tags }:BlogCardProps) => {
           <p>{description}</p>
           <div className="flex gap-2 mt-auto">
             {tags && tags.map((tag) => (
-              <Badge key={tag} variant="secondary" className="bg-[#3c3c3c] text-white hover:bg-[#4a4a4a]">
+              <Badge key={tag} variant="secondary" className="bg-red-500 hover:bg-red-800">
                 {tag}
               </Badge>
             ))}
