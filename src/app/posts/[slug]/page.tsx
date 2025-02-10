@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 
-import PostHeader from "@/components/PostHeader";
-import PostContent from "@/components/PostContent";
+import PostHeader from "@/components/Post/PostHeader";
+import PostContent from "@/components/Post/PostContent";
 import BackLink from "@/components/BackLink";
 
 import { getPost } from "@/lib/posts";

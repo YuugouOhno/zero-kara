@@ -14,24 +14,16 @@ export default {
 			colors: {
 				theme: {
 					bg: {
-						light: "#FFBFBF", // lightモードの背景色
-						dark: "#AF8787", // darkモードの背景色
+						light: "#F3F3F3", // lightモードの背景色
+						dark: "#3F3F3F", // darkモードの背景色
 					},
 					text: {
-					  light: "#4238AB",  // lightモードの文字色
-					  dark: "#B8B1FF", // darkモードの文字色
+					  light: "#3F3F3F",  // lightモードの文字色
+					  dark: "#F3F3F3", // darkモードの文字色
 					},
-					// bg: {
-					// 	light: "#F3F3F3", // lightモードの背景色
-					// 	dark: "#3F3F3F", // darkモードの背景色
-					// },
-					// text: {
-					//   light: "#3F3F3F",  // lightモードの文字色
-					//   dark: "#F3F3F3", // darkモードの文字色
-					// },
 				},
 				original: {
-					purple: "#C6B2C9",
+					purple: "#2C1636",
 					black: "#3F3F3F",
 					white: "#F3F3F3",
 				},

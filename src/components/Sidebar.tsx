@@ -4,7 +4,7 @@ const CATEGORIES = ["カテゴリー", "カテゴリー", "カテゴリー", "�
 
 export default function Sidebar() {
   return (
-    <aside className="w-64 space-y-8">
+    <aside className="w-64 space-y-8 hidden sm:block md:w-48 lg:w-64">
       <div>
         <h2 className="text-xl font-bold mb-4">検索</h2>
         <Input type="search" placeholder="検索..." className="w-full" />
