@@ -4,6 +4,8 @@ type Post = {
     slug: string;
     title: string;
     date: string;
+    description: string;
+    tags?: string[];
 };
 
 type BlogListProps = {
@@ -12,17 +14,17 @@ type BlogListProps = {
 
 const BlogList: React.FC<BlogListProps> = ({ posts }) => {
     return (
-        <div className="p-4 h-screen py-36 px-20 theme-bg-color">
-            <ul className="grid grid-cols-3 gap-4">
-                {posts.map((post) => (
+        <div className="space-y-4 flex-grow">
+            {posts.map((post) => (
                 <BlogCard
                     key={post.slug}
                     slug={post.slug}
                     title={post.title}
                     date={post.date}
+                    description={post.description}
+                    tags={post.tags}
                 />
-                ))}
-            </ul>
+            ))}
         </div>
     );
 };
