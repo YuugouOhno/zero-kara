@@ -30,7 +30,7 @@ export default function RootLayout({
     return (
         <html lang="ja" suppressHydrationWarning>
             <body
-            className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-hidden`}
+            className={`${geistSans.variable} ${geistMono.variable} antialiased bg-base text-base min-h-screen`}
             >
                 <ThemeProvider
                     attribute="class"
@@ -40,7 +40,7 @@ export default function RootLayout({
                     storageKey="acme-theme"
                 >
                     <Header />
-                    <main className="bg-base text-base min-h-screen flex gap-8 pt-12 px-12  justify-between">
+                    <main className="flex gap-8 pt-12 px-12  justify-between">
                         <div className="flex justify-center w-full">
                             {children}
                         </div>
