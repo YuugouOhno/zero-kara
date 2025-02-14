@@ -38,7 +38,7 @@ export async function getPosts(): Promise<Posts[]> {
             title: data.title as string,
             date: data.date as string,
             description: data.description as string,
-            category:data.string,
+            category: data.category as string,
             tags: (data.tags as string[]) ?? [],
         };
     });
@@ -60,7 +60,7 @@ export async function getPost(slug: string): Promise<Post> {
         date: data.date as string,
         description: data.description as string,
         content: content as string,
-        category:data.string,
+        category: data.category as string,
         tags: (data.tags as string[]) ?? [],
     };
 }
