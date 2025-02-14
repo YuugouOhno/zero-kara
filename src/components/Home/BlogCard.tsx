@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge"
+import { useRouter } from 'next/navigation'
 
 type BlogCardProps = {
     slug: string;
@@ -11,28 +14,51 @@ type BlogCardProps = {
 };
 
 const BlogCard = ({ slug,title,date,description,tags }:BlogCardProps) => {
+  const router = useRouter()
+
+  // カード全体をクリックしたら遷移
+  const handleCardClick = () => {
+    console.log("クリック！")
+    router.push(`/posts/${slug}`);
+  };
+
   return (
-    <article className="rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+    <article 
+      onClick={handleCardClick}
+      className="cursor-pointer rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+    >
       <div className="flex gap-6 p-4">
         <div className="relative h-40 max-w-full flex-shrink-0 aspect-[4/3]">
-          <Link href={`/posts/${slug}`}>
           <Image
             src={`/thumbnail/nextjs.png`}
             fill
             alt={title}
             className="object-cover w-full h-full rounded-lg"
           />
-          </Link>
         </div>
         <div className="flex flex-col flex-grow">
-          <time className="text-sm text-muted-foreground text-right ">{date}</time>
-          <Link href={`/posts/${slug}`}>
-            <h2 className="text-xl font-semibold line-clamp-2">{title}</h2>
-          </Link>
+          <time 
+            className="text-sm text-muted-foreground text-right hover:border"
+            onClick={(e) => {
+              e.stopPropagation();
+              router.push(`/?date=${date}`);
+            }}
+          >
+            {date}
+          </time>
+          <h2 className="text-xl font-semibold line-clamp-2">{title}</h2>
           <p>{description}</p>
           <div className="flex gap-2 mt-auto">
             {tags && tags.map((tag) => (
-              <Badge key={tag} variant="secondary" className="bg-red-500 hover:bg-red-800">
+              <Badge 
+                key={tag} 
+                variant="secondary" 
+                className="bg-red-500 hover:bg-red-800"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  router.push(`/?tag=${tag}`);
+                }}
+              >
                 {tag}
               </Badge>
             ))}
