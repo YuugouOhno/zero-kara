@@ -1,7 +1,8 @@
 ---
-title: 'notion'
+title: '競プロを始めたい'
 date: '2025-01-21'
-description: 'notionの画面'
+description: '競プロを始めたい'
+category: "競プロ"
 ---
 
 

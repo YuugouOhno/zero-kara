@@ -38,10 +38,10 @@ const BlogCard = ({ slug,title,date,description,tags }:BlogCardProps) => {
         </div>
         <div className="flex flex-col flex-grow">
           <time 
-            className="text-sm text-muted-foreground text-right hover:border"
+            className="text-sm text-muted-foreground text-right hover:underline"
             onClick={(e) => {
               e.stopPropagation();
-              router.push(`/?date=${date}`);
+              router.push(`?date=${date}`);
             }}
           >
             {date}
@@ -52,11 +52,11 @@ const BlogCard = ({ slug,title,date,description,tags }:BlogCardProps) => {
             {tags && tags.map((tag) => (
               <Badge 
                 key={tag} 
-                variant="secondary" 
-                className="bg-red-500 hover:bg-red-800"
+                variant="default" 
+                className="hover:shadow-md transition-shadow"
                 onClick={(e) => {
                   e.stopPropagation();
-                  router.push(`/?tag=${tag}`);
+                  router.push(`?tag=${tag}`);
                 }}
               >
                 {tag}

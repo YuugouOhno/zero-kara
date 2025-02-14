@@ -1,6 +1,7 @@
 import { Input } from "@/components/ui/input"
+import Link from "next/link";
 
-const CATEGORIES = ["カテゴリー", "カテゴリー", "カテゴリー", "カテゴリー", "カテゴリー", "カテゴリー", "カテゴリー"]
+const CATEGORIES = ["web", "競プロ", "その他"]
 
 export default function Sidebar() {
   return (
@@ -14,10 +15,10 @@ export default function Sidebar() {
         <h2 className="text-xl font-bold mb-4">カテゴリー一覧</h2>
         <ul className="space-y-2">
           {CATEGORIES.map((category, index) => (
-            <li key={index}>
-              <a href="#" className="text-gray-600 hover:text-gray-900 hover:underline">
+            <li key={index} className="text-gray-600 hover:text-gray-900 hover:underline">
+              <Link href={`?category=${category}`}>
                 {category}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

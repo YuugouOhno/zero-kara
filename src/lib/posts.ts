@@ -7,6 +7,8 @@ type Posts = {
     title: string;
     date: string;
     description: string;
+    category:string;
+    tags?: string[];
 };
 
 type Post = {
@@ -14,6 +16,8 @@ type Post = {
     date: string;
     description: string;
     content: string;
+    category:string;
+    tags?: string[];
 };
 
 // postsディレクトリのパスを取得
@@ -34,6 +38,8 @@ export async function getPosts(): Promise<Posts[]> {
             title: data.title as string,
             date: data.date as string,
             description: data.description as string,
+            category:data.string,
+            tags: (data.tags as string[]) ?? [],
         };
     });
 
@@ -54,5 +60,7 @@ export async function getPost(slug: string): Promise<Post> {
         date: data.date as string,
         description: data.description as string,
         content: content as string,
+        category:data.string,
+        tags: (data.tags as string[]) ?? [],
     };
 }
