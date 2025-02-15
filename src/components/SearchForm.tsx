@@ -11,12 +11,13 @@ export default function SearchForm() {
     const newQuery = e.target.value;
     const params = new URLSearchParams(Array.from(searchParams.entries()));
     if (newQuery) {
+      params.delete("tag");
       params.set("query", newQuery);
     } else {
       params.delete("query");
     }
     // 残りのパラメータ（category, tag など）もそのまま維持できるように
-    router.push(`?${params.toString()}`);
+    router.push(`/?${params.toString()}`);
   };
 
   return (
