@@ -16,7 +16,6 @@ export default function SearchForm() {
     } else {
       params.delete("query");
     }
-    // 残りのパラメータ（category, tag など）もそのまま維持できるように
     router.push(`/?${params.toString()}`);
   };
 

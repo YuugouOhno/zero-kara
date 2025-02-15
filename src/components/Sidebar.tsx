@@ -16,7 +16,7 @@ export default async function Sidebar() {
         <h2 className="text-xl font-bold mb-4">タグ一覧</h2>
         <ul className="space-y-2">
           {tagsData.map((tagData, index) => (
-            <li key={index} className="text-gray-600 hover:text-gray-900 hover:underline">
+            <li key={index} className="hover:underline">
               <Link href={`/?tag=${tagData.tag}`}>
                 {tagData.tag}({tagData.count})
               </Link>

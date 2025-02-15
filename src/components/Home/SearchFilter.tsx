@@ -9,7 +9,6 @@ type Post = {
   title: string;
   date: string;
   description: string;
-  category: string;
   tags?: string[];
 };
 
@@ -19,15 +18,10 @@ export default function SearchFilter({ posts }: { posts: Post[] }) {
 
   useEffect(() => {
     const query = searchParams.get("query") || "";
-    const category = searchParams.get("category") || "";
     const tag = searchParams.get("tag") || "";
 
     let filtered = posts;
-
-    if (category) {
-      filtered = filtered.filter((post) => post.category === category);
-    }
-
+    
     if (tag) {
       filtered = filtered.filter((post) => post.tags?.includes(tag));
     }
