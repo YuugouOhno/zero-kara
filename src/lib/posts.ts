@@ -3,21 +3,19 @@ import path from 'path';
 import matter from 'gray-matter';
 
 type Posts = {
-    slug: string;
-    title: string;
-    date: string;
-    description: string;
-    category:string;
-    tags?: string[];
+  slug: string;
+  title: string;
+  date: string;
+  description: string;
+  tags?: string[];
 };
 
 type Post = {
-    title: string;
-    date: string;
-    description: string;
-    content: string;
-    category:string;
-    tags?: string[];
+  title: string;
+  date: string;
+  description: string;
+  content: string;
+  tags?: string[];
 };
 
 // postsディレクトリのパスを取得
@@ -29,18 +27,17 @@ export async function getPosts(): Promise<Posts[]> {
 
     // 各Markdownファイルのメタデータを取得
     const posts: Posts[] = filenames.map((filename) => {
-        const filePath = path.join(postsDirectory, filename);
-        const fileContents = fs.readFileSync(filePath, 'utf8');
-        const { data } = matter(fileContents);
+      const filePath = path.join(postsDirectory, filename);
+      const fileContents = fs.readFileSync(filePath, 'utf8');
+      const { data } = matter(fileContents);
 
-        return {
-            slug: filename.replace(/\.md$/, ''), // 拡張子を除外
-            title: data.title as string,
-            date: data.date as string,
-            description: data.description as string,
-            category: data.category as string,
-            tags: (data.tags as string[]) ?? [],
-        };
+      return {
+        slug: filename.replace(/\.md$/, ''), // 拡張子を除外
+        title: data.title as string,
+        date: data.date as string,
+        description: data.description as string,
+        tags: (data.tags as string[]) ?? [],
+      };
     });
 
     // 日付でソート
@@ -56,11 +53,25 @@ export async function getPost(slug: string): Promise<Post> {
     const { data, content } = matter(fileContents);
 
     return {
-        title: data.title as string,
-        date: data.date as string,
-        description: data.description as string,
-        content: content as string,
-        category: data.category as string,
-        tags: (data.tags as string[]) ?? [],
+      title: data.title as string,
+      date: data.date as string,
+      description: data.description as string,
+      content: content as string,
+      tags: (data.tags as string[]) ?? [],
     };
+}
+
+// タグを取得
+export async function getTags(): Promise<{ tag: string; count: number }[]> {
+  const posts = await getPosts();
+  const tagMap: Record<string, number> = {};
+
+  posts.forEach((post) => {
+    post.tags?.forEach((tag) => {
+      tagMap[tag] = (tagMap[tag] || 0) + 1;
+    });
+  });
+
+  // オブジェクトを配列に変換して返す
+  return Object.entries(tagMap).map(([tag, count]) => ({ tag, count }));
 }

@@ -2,7 +2,6 @@
 title: 'Next.jsにthree.jsで宇宙を作る'
 date: '2024-12-25'
 description: 'Next.jsにthree.jsを使って宇宙空間を生成する方法を解説します。'
-category: "web"
 tags: ['nextjs','threejs']
 ---
 

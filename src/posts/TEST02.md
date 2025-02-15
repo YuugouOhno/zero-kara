@@ -2,7 +2,6 @@
 title: 'Next.jsでmarkdownブログを構築'
 date: '2025-01-15'
 description: 'Next.jsでmarkdownファイルを利用したブログの構築手順を解説しています。'
-category: "web"
 tags: ['nextjs','markdown']
 ---
 

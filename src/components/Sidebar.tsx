@@ -1,9 +1,10 @@
 import Link from "next/link";
 import SearchForm from "./SearchForm";
 
-const CATEGORIES = ["web", "競プロ", "その他"]
+import { getTags } from "@/lib/posts";
 
-export default function Sidebar() {
+export default async function Sidebar() {
+  const tagsData = await getTags()
   return (
     <aside className="w-64 space-y-8 hidden sm:block md:w-48 lg:w-64">
       <div>
@@ -12,12 +13,12 @@ export default function Sidebar() {
       </div>
 
       <div>
-        <h2 className="text-xl font-bold mb-4">カテゴリー一覧</h2>
+        <h2 className="text-xl font-bold mb-4">タグ一覧</h2>
         <ul className="space-y-2">
-          {CATEGORIES.map((category, index) => (
-            <li key={index} className="text-gray-600 hover:text-gray-900 hover:underline">
-              <Link href={`?category=${category}`}>
-                {category}
+          {tagsData.map((tagData, index) => (
+            <li key={index} className="hover:underline">
+              <Link href={`/?tag=${tagData.tag}`}>
+                {tagData.tag}({tagData.count})
               </Link>
             </li>
           ))}

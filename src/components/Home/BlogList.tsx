@@ -14,7 +14,7 @@ type BlogListProps = {
 
 const BlogList: React.FC<BlogListProps> = ({ posts }) => {
     return (
-        <div className="space-y-4 flex-grow">
+        <div className="space-y-4 flex-grow min-h-screen">
             {posts.map((post) => (
                 <BlogCard
                     key={post.slug}
