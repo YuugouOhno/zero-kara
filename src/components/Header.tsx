@@ -1,4 +1,4 @@
-import { ThemeToggle } from "@/feature/theme/theme-toggle";
+import { ThemeSwitch } from "@/feature/theme/theme-switch";
 
 const Header = () => {
 
@@ -7,7 +7,7 @@ const Header = () => {
             <div className="">
                 <div>©0→ ゼロカラ</div>
             </div>
-            <ThemeToggle />
+            <ThemeSwitch />
         </header>
     );
 }

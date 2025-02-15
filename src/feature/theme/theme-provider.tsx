@@ -4,8 +4,18 @@ import * as React from "react"
 import { ThemeProvider as NextThemesProvider } from "next-themes"
 
 export function ThemeProvider({
-    children,
-    ...props
+    children
 }: React.ComponentProps<typeof NextThemesProvider>) {
-    return <NextThemesProvider {...props}>{children}</NextThemesProvider>
+    return (
+        <NextThemesProvider
+            attribute="class"
+            defaultTheme="dark"
+            // defaultTheme="system"
+            // enableSystem
+            disableTransitionOnChange
+            storageKey="acme-theme"
+        >
+            {children}
+        </NextThemesProvider>
+    )
 }
