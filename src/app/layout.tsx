@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
+import { Suspense } from "react";
+
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { ThemeProvider } from "@/feature/theme/theme-provider";
@@ -44,7 +46,9 @@ export default function RootLayout({
                         <div className="flex justify-center w-full">
                             {children}
                         </div>
-                        <Sidebar/>
+                        <Suspense fallback={<div>Loading...</div>}>
+                            <Sidebar/>
+                        </Suspense>
                     </main>
                     <Footer />
                 </ThemeProvider>
