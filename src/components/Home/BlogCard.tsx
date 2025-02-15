@@ -17,7 +17,6 @@ const BlogCard = ({ slug,title,date,description,tags }:BlogCardProps) => {
 
   // カード全体をクリックしたら遷移
   const handleCardClick = () => {
-    console.log("クリック！")
     router.push(`/posts/${slug}`);
   };
 
