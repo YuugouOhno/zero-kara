@@ -22,6 +22,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
     title: "投稿一覧",
     description: "投稿一覧のページです。",
+    other: {
+        "google-site-verification": "UDkFUsK-bY3rLdAZ_xvPBC9oyY9ZngUZNA94fgJ2bcc",
+    },
 };
 
 export default function RootLayout({
