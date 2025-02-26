@@ -26,7 +26,7 @@ const BlogCard = ({ slug,title,date,description,tags }:BlogCardProps) => {
       className="cursor-pointer rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
     >
       <div className="flex gap-6 p-4">
-        <div className="relative h-40 max-w-full flex-shrink-0 aspect-[4/3]">
+        <div className="relative h-40 max-w-full flex-shrink-0 aspect-[4/3] hidden md:block">
           <Image
             src={`/posts/${slug}/thumbnail.png`}
             fill

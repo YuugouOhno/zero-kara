@@ -14,4 +14,4 @@ Next.js と　three.jsでかっこいい宇宙を作っていきます。
 
 three.jsのsceneを導入
 
-![画像](http://localhost:3000/posts/TEST01/01.png)
+![画像](/posts/TEST01/01.png)

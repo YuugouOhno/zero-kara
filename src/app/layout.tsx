@@ -45,7 +45,7 @@ export default function RootLayout({
                     storageKey="acme-theme"
                 >
                     <Header />
-                    <main className="flex gap-8 pt-20 px-12  justify-between">
+                    <main className="flex gap-8 py-20 px-12 justify-between">
                         <div className="flex justify-center w-full">
                             {children}
                         </div>
