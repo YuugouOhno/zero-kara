@@ -4,7 +4,6 @@ import "./globals.css";
 
 import { Suspense } from "react";
 
-import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { ThemeProvider } from "@/feature/theme/theme-provider";
 import Sidebar from "@/components/Sidebar";
@@ -54,7 +53,6 @@ export default function RootLayout({
                             <Sidebar/>
                         </Suspense>
                     </main>
-                    <Footer />
                 </ThemeProvider>
             </body>
         </html>
