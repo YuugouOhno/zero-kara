@@ -4,7 +4,7 @@ import PostHeader from "@/components/Post/PostHeader";
 import PostContent from "@/components/Post/PostContent";
 import BackLink from "@/components/BackLink";
 
-import { getPost } from "@/lib/posts";
+import { getPost, getPosts } from "@/lib/posts";
 
 type Props = {
     params: Promise<{
@@ -36,4 +36,15 @@ export default async function PostPage({ params }: Props) {
             <div className="h-32"></div>
         </div> 
     );
+}
+
+export async function generateStaticParams() {
+  // ここで全ての slug を取得
+  // 例: ローカルの Markdown ファイルや CMS API からスラッグ一覧を取得するなど
+  const posts = await getPosts() // { slug: string }[] を返す関数だと仮定
+
+  // { slug: 'xxx' } の形式で配列を返す
+  return posts.map((post) => ({
+    slug: post.slug,
+  }))
 }
