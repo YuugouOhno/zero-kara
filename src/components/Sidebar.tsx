@@ -6,7 +6,7 @@ import { getTags } from "@/lib/posts";
 export default async function Sidebar() {
   const tagsData = await getTags()
   return (
-    <aside className="w-64 space-y-8 hidden sm:block md:w-48 lg:w-64">
+    <aside className="min-w-64 space-y-8 hidden lg:block">
       <div>
         <h2 className="text-xl font-bold mb-4">検索</h2>
         <SearchForm />

@@ -19,26 +19,31 @@ type Post = {
 };
 
 // postsディレクトリのパスを取得
-const postsDirectory = path.join(process.cwd(), 'src/posts');
+const postsDirectory = path.join(process.cwd(), 'public/posts');
 
 export async function getPosts(): Promise<Posts[]> {
-    // ファイル一覧を取得
-    const filenames = fs.readdirSync(postsDirectory);
+    // // ファイル一覧を取得
+    // const filenames = fs.readdirSync(postsDirectory);
+    // 各投稿フォルダを取得
+    const directories = fs.readdirSync(postsDirectory);
+
 
     // 各Markdownファイルのメタデータを取得
-    const posts: Posts[] = filenames.map((filename) => {
-      const filePath = path.join(postsDirectory, filename);
+    const posts: Posts[] = directories.map((slug) => {
+      const filePath = path.join(postsDirectory, slug, 'index.md');
+      if (!fs.existsSync(filePath)) return null;
+
       const fileContents = fs.readFileSync(filePath, 'utf8');
       const { data } = matter(fileContents);
 
       return {
-        slug: filename.replace(/\.md$/, ''), // 拡張子を除外
+        slug, // 拡張子を除外
         title: data.title as string,
         date: data.date as string,
         description: data.description as string,
         tags: (data.tags as string[]) ?? [],
       };
-    });
+    }).filter(Boolean) as Posts[];
 
     // 日付でソート
     posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
@@ -48,7 +53,11 @@ export async function getPosts(): Promise<Posts[]> {
 
 // 投稿データを取得する関数
 export async function getPost(slug: string): Promise<Post> {
-    const filePath = path.join(postsDirectory, `${slug}.md`);
+    const filePath = path.join(postsDirectory, slug, "index.md");
+    if (!fs.existsSync(filePath)) {
+      throw new Error(`Post not found: ${slug}`);
+    }
+
     const fileContents = fs.readFileSync(filePath, 'utf8');
     const { data, content } = matter(fileContents);
 

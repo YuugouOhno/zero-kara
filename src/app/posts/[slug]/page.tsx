@@ -29,10 +29,11 @@ export default async function PostPage({ params }: Props) {
     const post = await getPost(slug);
 
     return (
-        <div className="p-4 max-w-4xl mx-auto h-screen py-36 px-20">
+        <div className="p-4 max-w-4xl mx-auto h-screen py-36 px-20 mb-36">
             <PostHeader title={post.title} date={post.date} />
             <PostContent content={post.content} />
-            <BackLink />
+            <BackLink/>
+            <div className="h-32"></div>
         </div> 
     );
 }

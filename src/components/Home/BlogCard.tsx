@@ -26,9 +26,9 @@ const BlogCard = ({ slug,title,date,description,tags }:BlogCardProps) => {
       className="cursor-pointer rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
     >
       <div className="flex gap-6 p-4">
-        <div className="relative h-40 max-w-full flex-shrink-0 aspect-[4/3]">
+        <div className="relative h-40 max-w-full flex-shrink-0 aspect-[4/3] hidden md:block">
           <Image
-            src={`/thumbnail/nextjs.png`}
+            src={`/posts/${slug}/thumbnail.png`}
             fill
             alt={title}
             className="object-cover w-full h-full rounded-lg"
@@ -45,7 +45,7 @@ const BlogCard = ({ slug,title,date,description,tags }:BlogCardProps) => {
             {date}
           </time>
           <h2 className="text-xl font-semibold line-clamp-2">{title}</h2>
-          <p>{description}</p>
+          <p  className="line-clamp-3">{description}</p>
           <div className="flex gap-2 mt-auto">
             {tags && tags.map((tag) => (
               <Badge 
