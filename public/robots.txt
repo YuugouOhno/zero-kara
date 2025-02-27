@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://zero-kara.com
+
+# Sitemaps
+Sitemap: https://zero-kara.com/sitemap.xml
